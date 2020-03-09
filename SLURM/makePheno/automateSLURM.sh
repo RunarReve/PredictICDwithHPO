@@ -5,7 +5,7 @@
 mkdir -p script	
 user="rever"
 #Split the file
-chunk="5"
+chunk="500"
 N=$(wc -l ${1} | awk '{print $1}')
 echo "${N}"
 split -l ${chunk} ${1} run

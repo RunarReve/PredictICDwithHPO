@@ -1,5 +1,5 @@
 morbid*
 HPO2ICD
-pheno/*.pheno
+pheno/*
 
 SLURM/*/*.out
