@@ -26,7 +26,6 @@ def main():
         else:
            out.append(each)
      
-     #print(randint(0,10))
      outfile.write("\t".join(out) + '\n')
      outrem.write("\t".join(rem) + '\n')
    print(dc/c)
