@@ -7,14 +7,14 @@ Method of converting ICD to HPO, then comparing the HPO with ICD
 Split ICD randomly out of morbid file  (90/10 or 80/20)
 
 
-#Convert ICD to HPO
+# Convert ICD to HPO
 
 
 
-#Run GWAS on HPO morbid 
+# Run GWAS on HPO morbid 
 
 
-#Merge HPO to recreate ICD
+# Merge HPO to recreate ICD
 
 
-#Compare original GWAS with merged HPO GWAS
+# Compare original GWAS with merged HPO GWAS
