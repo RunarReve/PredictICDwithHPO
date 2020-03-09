@@ -25,12 +25,24 @@ Input:
 Output:
    pheno file for plink in given directory
 
-This can be a time consuming job, due to some HPO tend to have a lot of ICD under them (higher up in ontology the more it has to cover) that is why we run all the pheno make on a cluster, for how we did this (on SLURM) se in directory SLURM/makePheno
+This can be a time consuming job, due to some HPO tend to have a lot of ICD under them (higher up in ontology the more it has to cover), might be possible to make this a lot quicker, but works for now. This is why we run all the pheno make on a cluster, for how we did this (on SLURM) se in directory SLURM/makePheno
 
 # Run GWAS on HPO morbid 
+TODO get GOATS/GOATSscript.sh and convert it to be more flexible 
+
+TODO get the rScripts needed for plots (P, OR, QQ plot)
+
+TODO make a SLURM for GWAS
 
 
 # Merge HPO to recreate ICD
 
+TODO get top N, all over x 
+
+TODO remove unnecisary HPOs, that is just noise 
 
 # Compare original GWAS with merged HPO GWAS
+
+TODO Compare if the found variants is also in master GWAS
+ 
+TODO Do some statistic, Jaccard, accurasy, or something 
