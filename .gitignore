@@ -1,0 +1,5 @@
+morbid*
+HPO2ICD
+pheno/*.pheno
+
+SLURM/*/*.out
