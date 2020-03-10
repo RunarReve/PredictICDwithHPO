@@ -6,7 +6,8 @@
 #Example ./GOATscript.sh G20 --maf 0.01 
 #Will end up with with directory output/G20/G20_--maf_0.01/ with plinks assoc file 
 # and a manhattan png file
-
+#argv[1]  Pheno file and output
+#argv[2+] plink settings
 #---------------SETUP---------------
 
 #Check if theres any input
@@ -57,7 +58,7 @@ tput sgr0
 #PLINK Assoc 
 module load plink
 mkdir -p output/${pheno}/${outFile}
-#plink --bfile ${bfile} --assoc counts ${plinkSet} --pheno ${phenodir}/${pheno} --out ${location}
+plink --bfile ${bfile} --assoc counts ${plinkSet} --pheno ${phenodir}/${pheno} --out ${location}
 
 #-------------PLOTS-----------------
 module load R
@@ -90,9 +91,8 @@ if [ -d "./plots/QQ/" ]; then
 fi
 mv ${location}.assoc.QQ.png ${location}.QQ.png
 
-#----------------DONE------------------
 
-#Done
+#----------------DONE------------------
 echo "End:"
 date '+%A %W %Y %X'
 echo "Done with: ${outFile}!" 
