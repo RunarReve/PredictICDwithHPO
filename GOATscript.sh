@@ -20,8 +20,8 @@ else
    echo "Creating output directory in currentt location"
    mkdir output
 fi
-rm -f output/${pheno}
-mkdir output/${pheno}
+#rm -f output/${pheno}
+mkdir -p  output/${pheno}
 
 #Start GOATSscript with standard input to make all files
 ./GOATSscript.sh ${pheno} --geno 0.1 --maf 0.01

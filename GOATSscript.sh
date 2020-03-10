@@ -21,7 +21,7 @@ outFile=$1  #Output file name
 plinkSet="" #Settings for plink
 
 #Change these when moving this file around 
-typeTitle="PlinkGeno" #TODO Part of title of plots (eg. plotFE or Genome)
+typeTitle="HPO" #TODO Part of title of plots (eg. plotFE or Genome)
 bfile="/encrypted/e3001/maxat/alldata" #TODO Location of bfile to run GWAS on
 phenodir="pheno"
 rscripts="rScripts"
@@ -56,27 +56,39 @@ tput sgr0
 
 #PLINK Assoc 
 module load plink
-mkdir output/${pheno}/${outFile}
-plink --bfile ${bfile} --assoc counts ${plinkSet} --pheno ${phenodir}/${pheno} --out ${location}
-exit
+mkdir -p output/${pheno}/${outFile}
+#plink --bfile ${bfile} --assoc counts ${plinkSet} --pheno ${phenodir}/${pheno} --out ${location}
 
-#------------MANHATTAN-PLOT---------
+#-------------PLOTS-----------------
 module load R
  
 #Extract the lowest, non 0, P value, to use as Y limit in plot
 lowestPVal=$(awk '{if( m== nulll || m > $9 && $9 != 0) {m = $9}  }  END{print m}' ${location}.assoc)
-#Get amount of cases and contorls
+#Get amount of cases and contorls from the log (might differ a small bit from pheno)
 stri="$(grep 'Among' ${location}.log | awk '{print "Cases: " $4"  Controls: " $8}')"
 
 #Make png Manhattan Plot 
-echo 'Normal Manhattan png'
+echo 'Manhattan'
 Rscript ${rscripts}/manPlotPNG.r "${typeTitle}:${outFile}  ${stri}" ${location}.assoc ${lowestPVal}
 #Move to easier find and change to a better name
-if [ -d "./plots/" ]; then 
-   cp ${location}.assoc.png plots/${outFile}.png
+if [ -d "./plots/manhattan/" ]; then 
+   cp ${location}.assoc.png plots/manhattan/${outFile}.png
 fi
 mv ${location}.assoc.png ${location}.png
 
+echo 'OR'
+Rscript ${rscripts}/manORPlot.r "${typeTitle}:${outFile}  ${stri}" ${location}.assoc 
+if [ -d "./plots/OR/" ]; then 
+   cp ${location}.assoc.OR.png plots/OR/${outFile}.png
+fi
+mv ${location}.assoc.OR.png ${location}.OR.png
+
+echo 'QQ'
+Rscript ${rscripts}/qqplot.r "${typeTitle}:${outFile}  ${stri}" ${location}.assoc ${lowestPVal}
+if [ -d "./plots/QQ/" ]; then 
+   cp ${location}.assoc.QQ.png plots/QQ/${outFile}.png
+fi
+mv ${location}.assoc.QQ.png ${location}.QQ.png
 
 #----------------DONE------------------
 

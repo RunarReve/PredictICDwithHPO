@@ -27,13 +27,30 @@ Output:
 
 This can be a time consuming job, due to some HPO tend to have a lot of ICD under them (higher up in ontology the more it has to cover), might be possible to make this a lot quicker, but works for now. This is why we run all the pheno make on a cluster, for how we did this (on SLURM) se in directory SLURM/makePheno
 
-countcase.sh is a script that will count all the cases in the pheno files in pheno/.
+./countcase.sh is a script that will count all the cases in the pheno files in pheno/.
 Space seperating file formated: "ID, case, control, total"
 
 # Run GWAS on HPO morbid 
 TODO get GOATS/GOATSscript.sh and convert it to be more flexible 
+./GOATscript.sh 
+Is a script that sets up the plink settings and start the next script
 
-TODO get the rScripts needed for plots (P, OR, QQ plot)
+./GOATSscript.sh 
+Script that runs plink on given pheno file with given settings
+Makes multiple plots from the GWAS (see output section below) 
+Uses PLINK 1.90 and Rscript 
+
+Input:
+   argv[1]  Pheno file
+   argv[2+] Settings for Plink to run GWAS
+Output:
+   In output directory/ phenofile/ plink settings:
+     GWAS result from GWAS runned with Plink
+     Manhattan plot (png)
+     QQ plot (png)
+     Manhattan plot with Odds ratio (png)
+   All png will also be copied to plots/   
+
 
 TODO make a SLURM for GWAS
 

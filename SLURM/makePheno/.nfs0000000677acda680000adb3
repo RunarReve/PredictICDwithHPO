@@ -18,12 +18,12 @@ do
    while (( $(squeue --user ${user} | wc -l) >= 1400 ))
    do
       squeue --user rever | wc -l 
-      echo "Nothing, Still on run ${i}, sleep"
+      echo "Nothing, Still on run${i}, sleep"
       sleep 200
       echo 'checking again'
    done
    ./makeSLUM.sh ${i}
-   echo "Genotype: On ${i}"
+   echo "Genotype: On TEMP${i}"
 done 
 
 echo 'DONE'

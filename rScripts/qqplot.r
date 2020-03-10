@@ -13,7 +13,7 @@ title <- args[1]
 location <- args[2]
 
 #Tell R that output should be .png 
-png(paste(location, ".png", sep=""), width = 900 , height = 900,  res = 90)
+png(paste(location, ".QQ.png", sep=""), width = 900 , height = 900,  res = 90)
 
 #Load in the table to
 theTable <- read.table(location, header = TRUE) 

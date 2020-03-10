@@ -20,3 +20,5 @@ SLURM/*/*.out
 #R ignore 
 rScripts/.R*
 
+#Plots
+*.png
