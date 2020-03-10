@@ -46,6 +46,7 @@ Input:
 Output:
    In output directory/ phenofile/ plink settings:
      GWAS result from GWAS runned with Plink
+     Filtered assoc file with variants under 9e-8
      Manhattan plot (png)
      QQ plot (png)
      Manhattan plot with Odds ratio (png)
@@ -54,7 +55,12 @@ Output:
 
 # Merge HPO to recreate ICD
 
-TODO get top N, all over x 
+./mergeHPO there is different methods for trying to find similarities:
+   topN: extracts the top N amount of variants based on P-value
+
+This is both done for ICD and HPO, so the comparison is located similarly
+
+TODO all over x 
 
 TODO remove unnecisary HPOs, that is just noise 
 
