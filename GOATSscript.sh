@@ -60,6 +60,9 @@ module load plink
 mkdir -p output/${pheno}/${outFile}
 plink --bfile ${bfile} --assoc counts ${plinkSet} --pheno ${phenodir}/${pheno} --out ${location}
 
+#-------------FILTER-OUT-P---------
+#Set to remove every variant with p-val over 9e-8
+awk '{if($1 == "CHR" || $9 < 9e-8){print $0}}' ${location}.assoc > ${location}.OR 
 #-------------PLOTS-----------------
 module load R
  
@@ -78,16 +81,16 @@ fi
 mv ${location}.assoc.png ${location}.png
 
 echo 'OR'
-Rscript ${rscripts}/manORPlot.r "${typeTitle}:${outFile}  ${stri}" ${location}.assoc 
+Rscript ${rscripts}/manORPlot.r "${typeTitle}:${outFile}  ${stri}" ${location}.OR 
 if [ -d "./plots/OR/" ]; then 
-   cp ${location}.assoc.OR.png plots/OR/${outFile}.png
+   cp ${location}.OR.OR.png plots/OR/${outFile}.OR.png
 fi
-mv ${location}.assoc.OR.png ${location}.OR.png
+mv ${location}.OR.OR.png ${location}.OR.png
 
 echo 'QQ'
 Rscript ${rscripts}/qqplot.r "${typeTitle}:${outFile}  ${stri}" ${location}.assoc ${lowestPVal}
 if [ -d "./plots/QQ/" ]; then 
-   cp ${location}.assoc.QQ.png plots/QQ/${outFile}.png
+   cp ${location}.assoc.QQ.png plots/QQ/${outFile}.QQ.png
 fi
 mv ${location}.assoc.QQ.png ${location}.QQ.png
 

@@ -5,6 +5,7 @@
 
 #Split given list into chunks
 chunk="500"
+rm -f run*
 cat ${1} | awk '{if($2 > '${2}'){print $0}}' > temp
 split -l ${chunk} temp run
 rm temp

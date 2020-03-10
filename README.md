@@ -52,9 +52,6 @@ Output:
    All png will also be copied to plots/   
 
 
-TODO make a SLURM for GWAS
-
-
 # Merge HPO to recreate ICD
 
 TODO get top N, all over x 
