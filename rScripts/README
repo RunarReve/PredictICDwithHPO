@@ -1,0 +1,3 @@
+To copy images from this file, you have to run scp (Secure CP) to get it
+eg. scp user@ilogin.ibex.kaust.edu.sa:/encrypted/e3001/runar/rScripts/*.pdf .
+    password: *******

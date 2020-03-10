@@ -1,5 +1,22 @@
+#Git Ignore file
+
+
+#Normal ignore
+*.swp
+
+#ICD & HPO ignore
 morbid*
 HPO2ICD
-pheno/*
+list
+phenolist
 
+#Plink ignore
+pheno/*
+output/*
+
+#cluster ignors
 SLURM/*/*.out
+
+#R ignore 
+rScripts/.R*
+

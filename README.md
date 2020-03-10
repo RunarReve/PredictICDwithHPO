@@ -27,6 +27,9 @@ Output:
 
 This can be a time consuming job, due to some HPO tend to have a lot of ICD under them (higher up in ontology the more it has to cover), might be possible to make this a lot quicker, but works for now. This is why we run all the pheno make on a cluster, for how we did this (on SLURM) se in directory SLURM/makePheno
 
+countcase.sh is a script that will count all the cases in the pheno files in pheno/.
+Space seperating file formated: "ID, case, control, total"
+
 # Run GWAS on HPO morbid 
 TODO get GOATS/GOATSscript.sh and convert it to be more flexible 
 
