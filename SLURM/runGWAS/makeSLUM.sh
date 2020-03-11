@@ -22,7 +22,7 @@ do
  
    chmod +x ${line}.sh   
    
-   #sbatch ${line}.sh
+   sbatch ${line}.sh
 
    cd ..
 
